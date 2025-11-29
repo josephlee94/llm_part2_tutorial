@@ -198,7 +198,7 @@ trainer = DPOTrainer(
     args=dpo_config,
     train_dataset=train_dataset,
     eval_dataset=eval_dataset,
-    tokenizer=tokenizer,
+    processing_class=tokenizer,
     callbacks=[SimpleTestCallback()],
 )
 
