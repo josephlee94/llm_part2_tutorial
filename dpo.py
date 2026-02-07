@@ -78,10 +78,10 @@ dataset = load_dataset(DATASET_NAME, split="train[:10000]")  # Use 10K examples
 print(f"Dataset size: {len(dataset)}")
 print(f"Columns: {dataset.column_names}")
 print(f"\nRAW FORMAT (first example):")
-print(f"System: {dataset[0].get('system', 'N/A')[:100]}...")
-print(f"Question: {dataset[0]['question'][:200]}...")
-print(f"Chosen: {dataset[0]['chosen'][:200]}...")
-print(f"Rejected: {dataset[0]['rejected'][:200]}...")
+print(f"System: {dataset[1].get('system', 'N/A')[:100]}...")
+print(f"Question: {dataset[1]['question'][:200]}...")
+print(f"Chosen: {dataset[1]['chosen'][:200]}...")
+print(f"Rejected: {dataset[1]['rejected'][:200]}...")
 
 # ============================================================
 # Format data for DPO
