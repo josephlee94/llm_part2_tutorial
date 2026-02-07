@@ -38,8 +38,6 @@ lora_config = LoraConfig(
     target_modules=[                 # Which modules to apply LoRA to
         "c_attn",                    # GPT-2 attention projection (combines Q, K, V)
         "c_proj",                    # GPT-2 attention output projection
-        # "c_fc",                    # Optional: MLP first layer (uncomment for more capacity)
-        # "c_proj",                  # Optional: MLP second layer
     ],
     bias="none",                     # Don't train bias terms ("none", "all", or "lora_only")
     inference_mode=False,            # We're training, not inferring
