@@ -69,7 +69,7 @@ test_model(model, tokenizer, step=0)
 DATASET_NAME = "PKU-Alignment/PKU-SafeRLHF"
 
 print(f"\nLoading dataset '{DATASET_NAME}'")
-raw_dataset = load_dataset(DATASET_NAME, split="train")
+dataset = load_dataset(DATASET_NAME, split="train")
 
 # Filter for safety-contrast pairs with moderate+ severity on the unsafe side
 #def has_safety_contrast(example):
