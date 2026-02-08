@@ -82,7 +82,7 @@ dataset = load_dataset(DATASET_NAME, split="train")
 #    else:
 #        return example['response_1_severity_level'] >= 2
 
-#dataset = raw_dataset.filter(has_safety_contrast)
+#dataset = dataset.filter(has_safety_contrast)
 dataset = dataset.select(range(min(20000, len(dataset))))  # Use up to 20K examples
 
 print(f"Dataset size: {len(dataset)}")
