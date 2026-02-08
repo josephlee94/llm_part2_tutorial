@@ -72,17 +72,17 @@ print(f"\nLoading dataset '{DATASET_NAME}'")
 raw_dataset = load_dataset(DATASET_NAME, split="train")
 
 # Filter for safety-contrast pairs with moderate+ severity on the unsafe side
-def has_safety_contrast(example):
-    """Select examples where one response is safe and the other is moderately/severely unsafe."""
-    if example['is_response_0_safe'] == example['is_response_1_safe']:
-        return False
-    # Require the unsafe response to have severity >= 2 (moderate or severe harm)
-    if not example['is_response_0_safe']:
-        return example['response_0_severity_level'] >= 2
-    else:
-        return example['response_1_severity_level'] >= 2
+#def has_safety_contrast(example):
+#    """Select examples where one response is safe and the other is moderately/severely unsafe."""
+#    if example['is_response_0_safe'] == example['is_response_1_safe']:
+#        return False
+#    # Require the unsafe response to have severity >= 2 (moderate or severe harm)
+#    if not example['is_response_0_safe']:
+#        return example['response_0_severity_level'] >= 2
+#    else:
+#        return example['response_1_severity_level'] >= 2
 
-dataset = raw_dataset.filter(has_safety_contrast)
+#dataset = raw_dataset.filter(has_safety_contrast)
 dataset = dataset.select(range(min(20000, len(dataset))))  # Use up to 20K examples
 
 print(f"Dataset size: {len(dataset)}")
@@ -113,9 +113,8 @@ def format_dpo_example(example):
         add_generation_prompt=True  # Adds the assistant turn start
     )
 
-    # Use safer_response_id to determine chosen/rejected
-    # Note: You can replace with 'better_response_id' for general preference datasets
-    chosen_id = example['safer_response_id']
+    # Note: You can replace with safer_response_id for safety
+    chosen_id = example['better_response_id']
     
     # Assign chosen and rejected based on the ID
     if chosen_id == 0:
